@@ -1,4 +1,4 @@
-package com.erkuai.commonarchitecture.ui;
+package com.erkuai.commonarchitecture.ui.fragment;
 
 import android.os.Bundle;
 

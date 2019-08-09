@@ -1,6 +1,9 @@
 package com.erkuai.commonarchitecture.http;
 
+import android.util.Log;
+
 import com.erkuai.commonarchitecture.base.BaseApplication;
+import com.erkuai.commonarchitecture.bean.BookInfo;
 import com.erkuai.commonarchitecture.constants.StringConstants;
 import com.erkuai.commonarchitecture.utils.Utils;
 import com.google.gson.Gson;

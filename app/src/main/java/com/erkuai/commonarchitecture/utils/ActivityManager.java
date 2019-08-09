@@ -52,4 +52,14 @@ public class ActivityManager {
         }
 
     }
+
+    public static void finishAllActivity() {
+        if (activityStack != null) {
+            for (Activity activity : activityStack) {
+                finishActivity(activity);
+            }
+        }
+        //杀死该应用进程
+        android.os.Process.killProcess(android.os.Process.myPid());
+    }
 }

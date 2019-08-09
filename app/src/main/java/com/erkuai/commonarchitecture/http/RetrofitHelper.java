@@ -28,10 +28,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitHelper {
 
     /****************************************请求******************************************/
-    public void getApk(String deviceCode, BaseSubscriber<?> subscriber) {
+    public void getBookInfo(String name, BaseSubscriber<?> subscriber) {
         HashMap<String, String> map = new HashMap<>();
-        map.put("device_code", deviceCode);
-        getRequestBaseBean(getApi().getUpgradeCheck(map), subscriber);
+        map.put("name", name);
+        getRequestBaseBean(getApi().getBookInfo(map), subscriber);
     }
 
     /****************************************配置******************************************/

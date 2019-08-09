@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.erkuai.commonarchitecture.di.FragmentScope;
 import com.erkuai.commonarchitecture.di.module.FragmentModule;
-import com.erkuai.commonarchitecture.ui.AFragment;
+import com.erkuai.commonarchitecture.ui.fragment.AFragment;
 
 import dagger.Component;
 

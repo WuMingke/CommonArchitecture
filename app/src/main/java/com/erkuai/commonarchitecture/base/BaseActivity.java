@@ -28,9 +28,9 @@ import butterknife.Unbinder;
  */
 
 public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements BaseView {
+
     @Inject
     protected T mPresenter;
-
 
     //butterKnife
     private Unbinder mUnbinder;
@@ -51,10 +51,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         onCreateBefore();
+        super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_base);
 
         LinearLayout linearLayout = ButterKnife.findById(this, R.id.base_view);
