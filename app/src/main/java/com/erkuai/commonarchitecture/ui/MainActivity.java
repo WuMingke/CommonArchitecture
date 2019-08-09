@@ -21,6 +21,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     @Override
+    protected void onCreateBefore() {
+
+    }
+
+    @Override
     protected void initEventAndData() {
 
     }

@@ -35,15 +35,14 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     //butterKnife
     private Unbinder mUnbinder;
 
-    //这里可以做一些setContentView之前的操作
-    protected void onCreateBefore() {
-    }
-
     //初始化注入
     protected abstract void initInject(Bundle bundle);
 
     //布局
     protected abstract int getLayout();
+
+    //这里可以做一些setContentView之前的操作
+    protected abstract void onCreateBefore();
 
     //初始化操作和加载数据
     protected abstract void initEventAndData();
@@ -59,7 +58,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         setContentView(R.layout.activity_base);
 
         LinearLayout linearLayout = ButterKnife.findById(this, R.id.base_view);
-        linearLayout.addView(getLayoutInflater().inflate(getLayout(), null), ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        linearLayout.addView(getLayoutInflater().inflate(getLayout(), null),
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mUnbinder = ButterKnife.bind(this);
 
         if (getSupportActionBar() != null) {
@@ -88,9 +88,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         mUnbinder.unbind();
         EventBus.getDefault().unregister(this);
 
-/*        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+/*        List<AFragment> fragments = getSupportFragmentManager().getFragments();
         if (fragments != null) {
-            for (Fragment fragment : fragments) {
+            for (AFragment fragment : fragments) {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .remove(fragment)
