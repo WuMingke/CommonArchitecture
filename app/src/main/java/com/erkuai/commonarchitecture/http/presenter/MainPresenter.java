@@ -2,7 +2,7 @@ package com.erkuai.commonarchitecture.http.presenter;
 
 import android.util.Log;
 
-import com.erkuai.commonarchitecture.bean.BookInfo;
+import com.erkuai.commonarchitecture.bean.JokeInfo;
 import com.erkuai.commonarchitecture.http.BaseSubscriber;
 import com.erkuai.commonarchitecture.http.RetrofitHelper;
 import com.erkuai.commonarchitecture.http.RxPresenter;
@@ -27,8 +27,8 @@ public class MainPresenter extends RxPresenter<MainContract.MainView> implements
     }
 
     @Override
-    public void getBookInfo(String bookName) {
-        RetrofitHelper.getRetrofitHelper().getBookInfo(bookName, new BaseSubscriber<BookInfo>() {
+    public void getJokeInfo(int page, int count, String type) {
+        RetrofitHelper.getRetrofitHelper().getJokeInfo(page, count, type, new BaseSubscriber<List<JokeInfo>>() {
             @Override
             public void onStart(Disposable disposable) {
                 super.onStart(disposable);
@@ -36,9 +36,9 @@ public class MainPresenter extends RxPresenter<MainContract.MainView> implements
             }
 
             @Override
-            public void handleResponseNext(BookInfo bookInfo) {
-                super.handleResponseNext(bookInfo);
-                mView.getBookInfoSuccess(bookInfo.getData());
+            public void handleResponseNext(List<JokeInfo> jokeInfoList) {
+                super.handleResponseNext(jokeInfoList);
+                mView.getJokeInfoSuccess(jokeInfoList);
             }
 
             @Override

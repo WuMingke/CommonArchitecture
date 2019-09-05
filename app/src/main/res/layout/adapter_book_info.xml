@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
+    android:layout_marginBottom="@dimen/dp_10"
     android:orientation="vertical">
 
     <ImageView
@@ -20,13 +21,17 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:textColor="@color/blue"
-            android:textSize="23sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/author"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true" />
 
     </LinearLayout>
 

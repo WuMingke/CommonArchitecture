@@ -1,7 +1,7 @@
 package com.erkuai.commonarchitecture.http.contract;
 
 import com.erkuai.commonarchitecture.base.BaseView;
-import com.erkuai.commonarchitecture.bean.BookInfo;
+import com.erkuai.commonarchitecture.bean.JokeInfo;
 import com.erkuai.commonarchitecture.http.BasePresenter;
 
 import java.util.List;
@@ -13,12 +13,12 @@ import java.util.List;
 public interface MainContract {
 
     interface MainView extends BaseView {
-        void getBookInfoSuccess(List<BookInfo.DataBean> dataBeanList);
+        void getJokeInfoSuccess(List<JokeInfo> jokeInfoList);
 
         void getBookInfoFailed();
     }
 
     interface Presenter extends BasePresenter<MainView> {
-        void getBookInfo(String bookName);
+        void getJokeInfo(int page, int count, String type);
     }
 }

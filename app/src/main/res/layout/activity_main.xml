@@ -7,6 +7,7 @@
     tools:context="com.erkuai.commonarchitecture.ui.activities.MainActivity">
 
     <android.support.v7.widget.RecyclerView
+        android:padding="@dimen/sp_16"
         android:id="@+id/book_info_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

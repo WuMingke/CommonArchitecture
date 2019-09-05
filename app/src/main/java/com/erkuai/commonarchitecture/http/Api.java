@@ -12,6 +12,6 @@ import retrofit2.http.QueryMap;
 
 public interface Api {
 
-    @GET("novelInfoApi")
-    Observable<BaseResponseBean> getBookInfo(@QueryMap Map<String, String> map);
+    @GET("getJoke")
+    Observable<BaseResponseBean> getJokeInfo(@QueryMap Map<String, String> map);
 }

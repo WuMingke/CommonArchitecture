@@ -1,6 +1,7 @@
 package com.erkuai.commonarchitecture.http;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.erkuai.commonarchitecture.constants.StringConstants;
 import com.erkuai.commonarchitecture.utils.Utils;
@@ -17,6 +18,7 @@ import javax.net.ssl.X509TrustManager;
 
 import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -28,10 +30,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitHelper {
 
     /****************************************请求******************************************/
-    public void getBookInfo(String name, BaseSubscriber<?> subscriber) {
+    public void getJokeInfo(int page, int count, String type, BaseSubscriber<?> subscriber) {
         HashMap<String, String> map = new HashMap<>();
-        map.put("name", name);
-        getRequestBaseBean(getApi().getBookInfo(map), subscriber);
+        map.put("page", String.valueOf(page));
+        map.put("count", String.valueOf(count));
+        map.put("type", type);
+        getRequestBaseBean(getApi().getJokeInfo(map), subscriber);
     }
 
     /****************************************配置******************************************/
@@ -57,10 +61,19 @@ public class RetrofitHelper {
 
     public OkHttpClient getOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor retrofitLog = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                //打印日志
+                Log.i("RetrofitLog", "retrofitBack = " + message);
+            }
+        });
+        retrofitLog.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.connectTimeout(StringConstants.NETWORK_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(StringConstants.NETWORK_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(StringConstants.NETWORK_TIMEOUT, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true);
+                .retryOnConnectionFailure(true)
+                .addInterceptor(retrofitLog);
         /*builder.sslSocketFactory(createSSLSocketFactory());//HTTPS配置
         builder.hostnameVerifier(new HostnameVerifier() {
             @Override

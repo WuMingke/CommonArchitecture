@@ -68,7 +68,7 @@ public class BaseApplication extends Application {
 
         // 设置崩溃后自动重启 APP
         // 参数依次为 上下文（建议是Application），是否是debug模式，是否崩溃后重启，重启延迟时间，重启的Activity
-        UncaughtExceptionHandlerImpl.getInstance().init(this, BuildConfig.DEBUG, false, 0, MainActivity.class);
+       // UncaughtExceptionHandlerImpl.getInstance().init(this, BuildConfig.DEBUG, false, 0, MainActivity.class);
 
     }
 

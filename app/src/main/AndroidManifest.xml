@@ -25,9 +25,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activities.TextActivity">
-
-        </activity>
     </application>
 
 </manifest>

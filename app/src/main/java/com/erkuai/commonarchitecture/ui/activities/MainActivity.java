@@ -3,14 +3,13 @@ package com.erkuai.commonarchitecture.ui.activities;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.erkuai.commonarchitecture.R;
 import com.erkuai.commonarchitecture.base.BaseActivity;
-import com.erkuai.commonarchitecture.bean.BookInfo;
+import com.erkuai.commonarchitecture.bean.JokeInfo;
 import com.erkuai.commonarchitecture.http.contract.MainContract;
 import com.erkuai.commonarchitecture.http.presenter.MainPresenter;
-import com.erkuai.commonarchitecture.widgets.adapters.BookInfoAdapter;
+import com.erkuai.commonarchitecture.widgets.adapters.JokeInfoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @BindView(R.id.book_info_recycler)
     RecyclerView book_info_recycler;
 
-    private BookInfoAdapter bookInfoAdapter;
+    private JokeInfoAdapter jokeInfoAdapter;
 
     @Override
     protected void initInject(Bundle bundle) {
@@ -42,17 +41,22 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void initEventAndData() {
 
-        book_info_recycler.setLayoutManager(new LinearLayoutManager(this));
-        bookInfoAdapter = new BookInfoAdapter(new ArrayList<BookInfo.DataBean>());
-        book_info_recycler.setAdapter(bookInfoAdapter);
+        book_info_recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        jokeInfoAdapter = new JokeInfoAdapter(new ArrayList<JokeInfo>());
+        book_info_recycler.setAdapter(jokeInfoAdapter);
 
-        mPresenter.getBookInfo("盗墓笔记");
+
+        // https://api.apiopen.top/getJoke?page=1&count=2&type=video
+        mPresenter.getJokeInfo(1, 10, "video");
     }
 
     @Override
-    public void getBookInfoSuccess(List<BookInfo.DataBean> dataBean) {
-        Log.i("wmk", dataBean.get(0).getAuthor());
-        bookInfoAdapter.setNewData(dataBean);
+    public void getJokeInfoSuccess(List<JokeInfo> jokeInfoList) {
+
+
+        jokeInfoAdapter.setNewData(jokeInfoList);
+
+        showToast("getJokeInfoSuccess");
     }
 
     @Override

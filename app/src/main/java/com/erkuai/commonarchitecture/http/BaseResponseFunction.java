@@ -1,8 +1,5 @@
 package com.erkuai.commonarchitecture.http;
 
-import android.util.Log;
-
-import com.erkuai.commonarchitecture.bean.BookInfo;
 import com.erkuai.commonarchitecture.constants.StringConstants;
 import com.google.gson.internal.LinkedTreeMap;
 

@@ -8,9 +8,9 @@ public class BaseResponseBean {
 
     private int code;
 
-    private String msg;
+    private String message;
 
-    private Object response;
+    private Object result;
 
     public int getCode() {
         return code;
@@ -21,18 +21,18 @@ public class BaseResponseBean {
     }
 
     public String getMsg() {
-        return msg;
+        return message;
     }
 
     public void setMsg(String msg) {
-        this.msg = msg;
+        this.message = msg;
     }
 
     public Object getResponse() {
-        return response;
+        return result;
     }
 
     public void setResponse(Object response) {
-        this.response = response;
+        this.result = response;
     }
 }

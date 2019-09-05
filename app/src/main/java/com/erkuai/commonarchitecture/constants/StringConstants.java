@@ -6,7 +6,7 @@ package com.erkuai.commonarchitecture.constants;
 
 public class StringConstants {
 
-    public static final String HOST = "https://www.apiopen.top/";
+    public static final String HOST = "https://api.apiopen.top/";
 
     //请求成功
     public static final int STATUS_SUCCESS = 200;
